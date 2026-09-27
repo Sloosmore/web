@@ -1,44 +1,59 @@
 import gsap from 'gsap'
-import { Suspense, lazy, useEffect, useRef } from 'react'
-import SceneErrorBoundary from './components/SceneErrorBoundary'
+import { useEffect, useRef } from 'react'
 
-const Scene = lazy(() => import('./components/Scene'))
+const links = [
+  { label: 'GitHub', href: 'https://github.com/Sloosmore' },
+]
 
 function App() {
-  const heroRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!heroRef.current) return
+    if (!contentRef.current) return
     gsap.fromTo(
-      heroRef.current.children,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
+      contentRef.current.children,
+      { opacity: 0, y: 8 },
+      { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: 'power2.out' },
     )
   }, [])
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#08060d]">
+    <main className="min-h-screen bg-white px-6 font-sans text-neutral-900">
       <div
-        ref={heroRef}
-        className="relative z-10 flex min-h-screen flex-col items-start justify-center gap-4 px-8 sm:px-16"
+        ref={contentRef}
+        className="mx-auto flex max-w-xl flex-col gap-10 pt-[22vh] pb-24"
       >
-        <p className="text-sm tracking-[0.3em] text-purple-300 uppercase">
+        <h1 className="font-serif text-4xl tracking-tight sm:text-5xl">
           Stan Loosmore
-        </p>
-        <h1 className="max-w-2xl text-5xl font-medium tracking-tight text-white sm:text-7xl">
-          Building things on the web.
         </h1>
-        <p className="max-w-md text-lg text-gray-400">
-          Personal site scaffold — Vite, React, React Three Fiber, and GSAP.
-        </p>
-      </div>
 
-      <div className="absolute inset-0 z-0">
-        <SceneErrorBoundary>
-          <Suspense fallback={null}>
-            <Scene />
-          </Suspense>
-        </SceneErrorBoundary>
+        <div className="space-y-5 text-[17px] leading-relaxed text-neutral-600">
+          <p>
+            I build software, mostly for the web. I like small, fast tools and
+            interfaces that get out of the way.
+          </p>
+          <p>
+            Lately I've been spending time on developer tooling, a bit of
+            graphics programming, and learning to make things that feel good
+            to use. Outside of that: long walks, too much coffee, and a
+            growing stack of half-read books.
+          </p>
+        </div>
+
+        <ul className="flex gap-6 text-[15px]">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-neutral-900 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-neutral-900"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </main>
   )

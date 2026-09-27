@@ -1,19 +1,17 @@
 @import 'tailwindcss';
 
-:root {
-  color-scheme: dark;
+@theme {
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, ui-serif, serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
-html,
-body,
-#root {
-  height: 100%;
+:root {
+  color-scheme: light;
 }
 
 body {
   margin: 0;
-  background: #08060d;
-  color: #f3f4f6;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  background: #fff;
+  color: #111;
   -webkit-font-smoothing: antialiased;
 }
