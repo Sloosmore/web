@@ -24,7 +24,7 @@ function App() {
       ref={mainRef}
       className="flex min-h-screen flex-col bg-white px-6 font-sans text-neutral-900"
     >
-      <div className="mx-auto flex w-full max-w-xl flex-col gap-10 pt-[22vh] pb-24">
+      <div className="mx-auto flex w-full max-w-xl flex-col gap-10 pt-[20vh] pb-24">
         <h1 data-reveal className="font-serif text-4xl tracking-tight sm:text-5xl">
           Stan Loosmore
         </h1>
@@ -46,7 +46,7 @@ function App() {
         </div>
       </div>
 
-      <footer data-reveal className="mx-auto mt-auto w-full max-w-xl pb-10">
+      <footer data-reveal className="mx-auto mt-auto w-full max-w-xl pb-[20vh]">
         <ul className="flex gap-6 text-[15px]">
           {links.map((link) => (
             <li key={link.label}>
